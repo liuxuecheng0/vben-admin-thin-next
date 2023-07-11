@@ -2,45 +2,6 @@ import { resultSuccess, resultError, getRequestToken, requestParams } from '../_
 import { MockMethod } from 'vite-plugin-mock';
 import { createFakeUserList } from './user';
 
-// single
-const dashboardRoute = {
-  path: '/dashboard',
-  name: 'Dashboard',
-  component: 'LAYOUT',
-  redirect: '/dashboard/analysis',
-  meta: {
-    title: 'routes.dashboard.dashboard',
-    hideChildrenInMenu: true,
-    icon: 'bx:bx-home',
-  },
-  children: [
-    {
-      path: 'analysis',
-      name: 'Analysis',
-      component: '/dashboard/analysis/index',
-      meta: {
-        hideMenu: true,
-        hideBreadcrumb: true,
-        title: 'routes.dashboard.analysis',
-        currentActiveMenu: '/dashboard',
-        icon: 'bx:bx-home',
-      },
-    },
-    {
-      path: 'workbench',
-      name: 'Workbench',
-      component: '/dashboard/workbench/index',
-      meta: {
-        hideMenu: true,
-        hideBreadcrumb: true,
-        title: 'routes.dashboard.workbench',
-        currentActiveMenu: '/dashboard',
-        icon: 'bx:bx-home',
-      },
-    },
-  ],
-};
-
 const backRoute = {
   path: 'back',
   name: 'PermissionBackDemo',
@@ -253,12 +214,10 @@ export default [
       let menu: Object[];
       switch (id) {
         case '1':
-          dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[0].path;
-          menu = [dashboardRoute, authRoute, levelRoute, sysRoute, linkRoute];
+          menu = [authRoute, levelRoute, sysRoute, linkRoute];
           break;
         case '2':
-          dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[1].path;
-          menu = [dashboardRoute, authRoute, levelRoute, linkRoute];
+          menu = [authRoute, levelRoute, linkRoute];
           break;
         default:
           menu = [];
